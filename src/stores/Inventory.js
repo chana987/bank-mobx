@@ -1,8 +1,13 @@
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 import { Item } from './Item'
 
 export class Inventory {
     @observable items = []
+    @computed get numItems() {
+        let count = 0
+        this.items.forEach(i => count += i.quantity)
+        return count
+    }
     @action addItem = (name, price = 0, quantity = 1) => {
         if (name === '' || price === '') {
             alert('incomplete info')

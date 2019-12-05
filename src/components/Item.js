@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
+@inject ("Inventory")
 @observer
 class Item extends Component {
     buyItem = () => {
-        this.props.store.buyItem(this.props.item.name)
+        this.props.Inventory.buyItem(this.props.item.name)
     }
     changePrice = () => {
         let price = prompt("Enter new price:")
-        this.props.store.changePrice(this.props.item.name, price)
+        this.props.Inventory.changePrice(this.props.item.name, price)
     }
     render() {
         let item = this.props.item
