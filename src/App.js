@@ -5,20 +5,26 @@ import Transactions from './components/Transactions'
 import Operations from './components/Operations'
 import Categories from './components/Categories'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 @inject("BankStore")
 @observer
 class App extends Component { 
   componentDidMount = () => {
-    this.props.BankStore.getTransactions()
+    this.props.BankStore.fetchTransactions()
   } 
   render() {
     return (
       <Router>
-        <div>
+        <div className="App">
           <div className="links">
-            <Link to="/">View transactions</Link>
-            <Link to="/operations">Add transaction</Link>
+          
+            <Link to="/"><Button color="default">
+              View transactions
+            </Button></Link>
+            <Link to="/operations"><Button color="default">
+              Add transaction
+            </Button></Link>
           </div>
           
           <Route exact path="/operations">

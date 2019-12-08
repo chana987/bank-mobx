@@ -1,5 +1,4 @@
 import { observable} from  'mobx'
-import moment from 'moment'
 
 export default class Transaction {
     @observable amount
@@ -11,7 +10,7 @@ export default class Transaction {
         this.amount = parseInt(amount)
         this.category = category
         this.vendor = vendor
-        this.date = moment(date).format('MMM, YYYY')
+        this.date = date
         this.id = id
     }
 }

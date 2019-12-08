@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import { inject, observer } from 'mobx-react';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import Button from '@material-ui/core/Button';
+import '../styles/Transaction.css'
 
 @inject("BankStore")
 @observer
@@ -12,13 +16,13 @@ class Transaction extends Component {
     render() {
         let transaction = this.props.transaction
         return (
-        <tr>
-            <td><Moment format="MMM, YYYY">{transaction.date}</Moment></td>
-            <td>{transaction.vendor}</td>
-            <td>{transaction.amount}</td>
-            <td>{transaction.category}</td>
-            <td><button className="transaction-delete" onClick={this.deleteTransaction}>x</button></td>
-        </tr>
+        <TableRow>
+            <TableCell className="table-cell"><Moment format="MMM D, YYYY">{transaction.date}</Moment></TableCell>
+            <TableCell className="table-cell">{transaction.amount}</TableCell>
+            <TableCell className="table-cell">{transaction.vendor}</TableCell>
+            <TableCell className="table-cell">{transaction.category}</TableCell>
+            <TableCell className="table-cell"><Button variant="contained" color="default" onClick={this.deleteTransaction}>x</Button></TableCell>
+        </TableRow>
         );
     }
 }
