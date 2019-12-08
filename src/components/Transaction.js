@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import Moment from 'react-moment';
+import { inject, observer } from 'mobx-react';
 
+@inject("BankStore")
+@observer
 class Transaction extends Component {
     deleteTransaction = () => {
-        this.props.deleteTransaction(this.props.transaction._id)
+        this.props.BankStore.deleteTransaction(this.props.transaction.id)
     }
 
     render() {
         let transaction = this.props.transaction
         return (
-        <div className="transaction">
-            <Moment format="MMM-YYYY">{transaction.date}</Moment>
-            <span className="transaction-vendor">{transaction.vendor}</span>
-            <span className="transaction-amount">{transaction.amount}</span>
-            <Link to={`/transactions/breakdown/categories/${transaction.category}`} className="transaction-category">{transaction.category}</Link>
-            <button className="transaction-delete" onClick={this.deleteTransaction}>x</button>
-        </div>
+        <tr>
+            <td><Moment format="MMM, YYYY">{transaction.date}</Moment></td>
+            <td>{transaction.vendor}</td>
+            <td>{transaction.amount}</td>
+            <td>{transaction.category}</td>
+            <td><button className="transaction-delete" onClick={this.deleteTransaction}>x</button></td>
+        </tr>
         );
     }
 }

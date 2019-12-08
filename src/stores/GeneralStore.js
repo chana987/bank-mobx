@@ -6,6 +6,7 @@ export class GeneralStore {
     @observable vendor = ''
     @observable date = ''
     @action handleInput = (name, value) => {
-        this[name] = value
+        name === 'number' ? this[name] = parseInt(value)
+        : this[name] = value
     } 
 }

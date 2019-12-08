@@ -8,6 +8,16 @@ class Operations extends Component {
     inputHandler = (e) => {
         this.props.GeneralStore.handleInput(e.target.name, e.target.value)
     }
+    addTransaction = () => {
+        let GeneralStore = this.props.GeneralStore
+        let transaction = {
+            amount: GeneralStore.amount, 
+            category: GeneralStore.category, 
+            vendor: GeneralStore.vendor, 
+            date: GeneralStore.date
+        }
+        this.props.BankStore.addTransaction({ transaction })
+    }
     render () {
         return (
             <div>
@@ -36,11 +46,11 @@ class Operations extends Component {
                 <Link to="/" 
                     className="withdraw" 
                     name="withdraw" 
-                    onClick={this.props.BankStore.addTransaction}>Withdraw</Link>
+                    onClick={this.addTransaction}>Withdraw</Link>
                 <Link to="/" 
                     className="deposit" 
                     name="deposit" 
-                    onClick={this.props.BankStore.addTransaction}>Deposit</Link>
+                    onClick={this.addTransaction}>Deposit</Link>
             </div>
         )   
     }

@@ -3,12 +3,12 @@ import { observer, inject } from 'mobx-react'
 
 @inject ("BankStore")
 @observer
-class Categories extends Component {   
+class Categories extends Component {  
     render() {
         return (
             <div>
-                {this.props.BankStore.transactions.map((t) => 
-                    <Transaction transaction={t} key={t._id} /> )}
+                {this.props.BankStore.getCategories().map((c, i) => 
+                <p key={i}>{c.name} - {c.sum}</p>)}
             </div>
         );
     }
