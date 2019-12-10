@@ -1,6 +1,5 @@
 import { observer, inject } from 'mobx-react'
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import Transaction from './Transaction';
 import '../App.css'
 import Table from '@material-ui/core/Table';
@@ -21,7 +20,7 @@ class Categories extends Component {
                             <TableCell style={{ fontWeight: 900 }}>Date</TableCell>
                             <TableCell style={{ fontWeight: 900 }}>Amount</TableCell>
                             <TableCell style={{ fontWeight: 900 }}>Vendor</TableCell>
-                            <TableCell style={{ fontWeight: 900 }}><Link to="/categories">Category</Link></TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Category</TableCell>
                             <TableCell style={{ fontWeight: 900 }}></TableCell>
                         </TableRow>
                     </TableHead>
