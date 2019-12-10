@@ -16,7 +16,9 @@ class Transactions extends Component {
         this.props.GeneralStore.handleInput(e.target.name, e.target.value)
     }
     filterByDate = () => {
-        this.props.BankStore.filterByDate(this.props.GeneralStore.startDate, this.props.GeneralStore.endDate)
+        let startDate = this.props.GeneralStore.startDate || '1700-01-01T00:00:00Z GMT'
+        let endDate = this.props.GeneralStore.endDate || '4000-12-31T00:00:00Z GMT'
+        this.props.BankStore.filterByDate(startDate, endDate)
     }
     render() {
         return (
