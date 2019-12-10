@@ -11,10 +11,10 @@ router.get('/transactions', function (req, res) {
     })
 })
 
-router.post('/transaction', function (req, res) {
+router.post('/transaction', async function (req, res) {
     const transaction = new Transaction({ ...req.body.transaction })
-    transaction.save()
-    .then(res.send(transaction))
+    await transaction.save()
+    res.send(transaction)
 })
 
 router.delete('/transaction/:id', async function (req, res) {

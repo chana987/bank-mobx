@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link } from "react-router-dom";
-import '../styles/Transactions.css'
+import '../App.css'
 import Transaction from './Transaction';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Button from '@material-ui/core/Button';
 
 @inject("BankStore", "GeneralStore")
 @observer
@@ -21,32 +21,34 @@ class Transactions extends Component {
     render() {
         return (
             <div>
+                <h3 className="balance">Balance: ${this.props.BankStore.balance}</h3>
                 <div className="dateRange">
                     <input onChange={this.inputHandler}
                         name="startDate"
                         type="date"
                         value={this.props.GeneralStore.startDate}
+                        style={{ margin: "20px" }}
                     />
                     <input onChange={this.inputHandler}
                         name="endDate"
                         type="date"
                         value={this.props.GeneralStore.endDate}
+                        style={{ margin: "20px" }}
                     />
-                    <button type="submit" onClick={this.filterByDate}>Find</button>
+                    <Button onClick={this.filterByDate} variant="contained" color="primary">Find</Button>
                 </div>
-                <p className="balance">Balance: {this.props.BankStore.balance}</p>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell className="heavy">Date</TableCell>
-                            <TableCell className="heavy">Amount</TableCell>
-                            <TableCell className="heavy">Vendor</TableCell>
-                            <TableCell className="heavy"><Link to="/categories">Category</Link></TableCell>
-                            <TableCell className="heavy"></TableCell>
+                            <TableCell style={{ fontWeight: 900 }} className="heavy">Date</TableCell>
+                            <TableCell style={{ fontWeight: 900 }} className="heavy">Amount</TableCell>
+                            <TableCell style={{ fontWeight: 900 }} className="heavy">Vendor</TableCell>
+                            <TableCell style={{ fontWeight: 900 }} className="heavy">Category</TableCell>
+                            <TableCell style={{ fontWeight: 900 }} className="heavy"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.BankStore.transactions.map((t) =>
+                        {this.props.BankStore.filteredTransactions.map((t) =>
                             <Transaction transaction={t} key={t.id} />)}
                     </TableBody>
                 </Table>

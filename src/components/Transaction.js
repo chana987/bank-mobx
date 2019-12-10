@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
-import '../styles/Transaction.css'
+import '../App.css'
 
 @inject("BankStore")
 @observer
@@ -21,7 +21,7 @@ class Transaction extends Component {
             <TableCell className="table-cell">{transaction.amount}</TableCell>
             <TableCell className="table-cell">{transaction.vendor}</TableCell>
             <TableCell className="table-cell">{transaction.category}</TableCell>
-            <TableCell className="table-cell"><Button variant="contained" color="default" onClick={this.deleteTransaction}>x</Button></TableCell>
+            <TableCell className="table-cell"><Button variant="contained" color="primary" onClick={this.deleteTransaction}>x</Button></TableCell>
         </TableRow>
         );
     }

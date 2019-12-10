@@ -1,10 +1,19 @@
 .App {
   background-color: #dadfe9;
   min-height: 100vh;
+  text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
+}
+
+.links {
+  text-align: center;
+}
+
+.MuiButtonBase-root {
+border: 2px black solid;
 }
 
 .App-header {
@@ -20,4 +29,14 @@
 
 a {
   text-decoration: none;
+}
+
+button {
+  margin: 25px;
+}
+
+.add-transaction {
+  margin: auto;
+  display: inline-block;
+  width: 300px;
 }

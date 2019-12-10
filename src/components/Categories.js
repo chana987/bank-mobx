@@ -2,7 +2,7 @@ import { observer, inject } from 'mobx-react'
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Transaction from './Transaction';
-import '../styles/Transactions.css'
+import '../App.css'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
@@ -18,17 +18,17 @@ class Categories extends Component {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell className="heavy">Date</TableCell>
-                            <TableCell className="heavy">Amount</TableCell>
-                            <TableCell className="heavy">Vendor</TableCell>
-                            <TableCell className="heavy"><Link to="/categories">Category</Link></TableCell>
-                            <TableCell className="heavy"></TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Date</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Amount</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Vendor</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}><Link to="/categories">Category</Link></TableCell>
+                            <TableCell style={{ fontWeight: 900 }}></TableCell>
                         </TableRow>
                     </TableHead>
                     {this.props.BankStore.getCategories.map((c, i) =>
                         <TableBody key={i}>
                             <TableRow>
-                                <TableCell className="heavy">{c}</TableCell>
+                                <TableCell style={{ fontWeight: 900 }}>{c}</TableCell>
                             </TableRow>
                             {this.props.BankStore.transactions.map((t) => t.category === c ?
                                 <Transaction transaction={t} key={t.id} /> : null )}
