@@ -40,11 +40,11 @@ class Transactions extends Component {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Date</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Amount</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Vendor</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Category</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy"></TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Date</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Amount</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Vendor</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Category</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -23,7 +23,7 @@ export class BankStore {
     @action fetchTransactions = async () => {
         try {
             let transactions = []
-            let response = await axios.get('/transactions')
+            let response = await axios.get('http://localhost:4000/transactions')
             response.data.forEach(t => transactions.push(new Transaction(t.amount, t.category, t.vendor, t.date, t._id)))
             this.transactions = transactions
             this.filteredTransactions = transactions
@@ -36,7 +36,7 @@ export class BankStore {
             return "Incorrect input"
         }
         try {
-            let response = await axios.post('/transaction', { transaction })
+            let response = await axios.post('http://localhost:4000/transaction', { transaction })
             this.fetchTransactions()
             return response
         } catch {
@@ -45,7 +45,7 @@ export class BankStore {
     }
     @action deleteTransaction = async (id) => {
         try {
-            await axios.delete(`/transaction/${id}`)
+            await axios.delete(`http://localhost:4000/transaction/${id}`)
             this.fetchTransactions()
         } catch {
             throw new Error("Whoops, didn't work")
