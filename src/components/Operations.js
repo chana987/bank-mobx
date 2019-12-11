@@ -14,15 +14,23 @@ class Operations extends Component {
     inputHandler = (e) => {
         this.props.GeneralStore.handleInput(e.target.name, e.target.value)
     }
+    
     addTransaction = async (event) => {
         event.persist()
         let GeneralStore = this.props.GeneralStore
+        if (event.target.childNodes[0].data === "Withdraw" 
+            && this.props.BankStore.balance - GeneralStore.amount < 500) {
+                toast.warn("You can't touch your reserve money")
+                return
+        }
+
         let transaction = {
             amount: event.target.childNodes[0].data === "Withdraw" ? -parseInt(GeneralStore.amount) : parseInt(GeneralStore.amount),
             category: GeneralStore.category,
             vendor: GeneralStore.vendor,
             date: GeneralStore.date
         }
+
         try {
             let response = await this.props.BankStore.addTransaction({ transaction })
             if (response.data) {
@@ -34,6 +42,7 @@ class Operations extends Component {
             toast.error("Something went wrong")
         }
     }
+
     render() {
         return (
             <div className="add-transaction">

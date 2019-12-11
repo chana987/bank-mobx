@@ -16,7 +16,7 @@ export class BankStore {
         return categories
     }
 
-    @action filterByDate = (startDate = '1700-01-01T00:00:00Z GMT', endDate = '4000-12-31T00:00:00Z GMT') => {
+    @action filterByDate = (startDate, endDate) => {
         this.filteredTransactions = [...this.transactions].filter(t => t.date >= startDate && t.date <= endDate)
     }
 
