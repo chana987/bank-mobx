@@ -32,7 +32,7 @@ export class BankStore {
         }
     }
     @action addTransaction = async ({transaction}) => {
-        if (transaction.amount === '' || transaction.amount <= 0 || transaction.category === '' || transaction.vendor === '' || transaction.date === '') {
+        if (transaction.amount === '' || transaction.category === '' || transaction.vendor === '' || transaction.date === '') {
             return "Incorrect input"
         }
         try {

@@ -14,10 +14,11 @@ class Operations extends Component {
     inputHandler = (e) => {
         this.props.GeneralStore.handleInput(e.target.name, e.target.value)
     }
-    addTransaction = async (e) => {
+    addTransaction = async (event) => {
+        event.persist()
         let GeneralStore = this.props.GeneralStore
         let transaction = {
-            amount: e.target.className === 'withdraw' ? -GeneralStore.amount : GeneralStore.amount,
+            amount: event.target.childNodes[0].data === "Withdraw" ? -parseInt(GeneralStore.amount) : parseInt(GeneralStore.amount),
             category: GeneralStore.category,
             vendor: GeneralStore.vendor,
             date: GeneralStore.date
@@ -61,13 +62,21 @@ class Operations extends Component {
                     />
                     <div>
                         <Link to="/"
-                            className="withdraw"
                             name="withdraw"
-                            onClick={this.addTransaction}><Button variant="contained" color="primary" style={{ margin: "20px" }}>Withdraw</Button></Link>
+                            onClickCapture={this.addTransaction}
+                            className="withdraw">
+                            <Button variant="contained" color="primary"
+                                style={{ margin: "20px" }}>Withdraw
+                                </Button>
+                        </Link>
                         <Link to="/"
-                            className="deposit"
                             name="deposit"
-                            onClick={this.addTransaction}><Button variant="contained" color="primary" style={{ margin: "20px" }}>Deposit</Button></Link>
+                            onClickCapture={this.addTransaction}
+                            className="deposit">
+                            <Button variant="contained" color="primary"
+                                style={{ margin: "20px" }}>Deposit
+                                </Button>
+                        </Link>
                     </div>
                 </Grid>
             </div>
