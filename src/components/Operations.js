@@ -23,13 +23,17 @@ class Operations extends Component {
                 toast.warn("You can't touch your reserve money")
                 return
         }
-
+        if (GeneralStore.amount === '' || GeneralStore.category === '' || GeneralStore.vendor === '' || GeneralStore.date === '') {
+            toast.error("Incorrect input")
+            return
+        }
         let transaction = {
             amount: event.target.childNodes[0].data === "Withdraw" ? -parseInt(GeneralStore.amount) : parseInt(GeneralStore.amount),
             category: GeneralStore.category,
             vendor: GeneralStore.vendor,
             date: GeneralStore.date
         }
+        console.log(transaction)
 
         try {
             let response = await this.props.BankStore.addTransaction({ transaction })

@@ -32,9 +32,6 @@ export class BankStore {
         }
     }
     @action addTransaction = async ({transaction}) => {
-        if (transaction.amount === '' || transaction.category === '' || transaction.vendor === '' || transaction.date === '') {
-            return "Incorrect input"
-        }
         try {
             let response = await axios.post('http://localhost:4000/transaction', { transaction })
             this.fetchTransactions()
