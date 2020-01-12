@@ -16,7 +16,9 @@ class Transactions extends Component {
         this.props.GeneralStore.handleInput(e.target.name, e.target.value)
     }
     filterByDate = () => {
-        this.props.BankStore.filterByDate(this.props.GeneralStore.startDate, this.props.GeneralStore.endDate)
+        let startDate = this.props.GeneralStore.startDate || '1700-01-01T00:00:00Z GMT'
+        let endDate = this.props.GeneralStore.endDate || '4000-12-31T00:00:00Z GMT'
+        this.props.BankStore.filterByDate(startDate, endDate)
     }
     render() {
         return (
@@ -37,14 +39,14 @@ class Transactions extends Component {
                     />
                     <Button onClick={this.filterByDate} variant="contained" color="primary">Find</Button>
                 </div>
-                <Table>
+                <Table className="table">
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Date</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Amount</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Vendor</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy">Category</TableCell>
-                            <TableCell style={{ fontWeight: 900 }} className="heavy"></TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Date</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Amount</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Vendor</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}>Category</TableCell>
+                            <TableCell style={{ fontWeight: 900 }}></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -16,7 +16,7 @@ class Transaction extends Component {
     render() {
         let transaction = this.props.transaction
         return (
-        <TableRow>
+        <TableRow style={{ borderBottom: "2px solid grey"}}>
             <TableCell className="table-cell"><Moment format="MMM D, YYYY">{transaction.date}</Moment></TableCell>
             <TableCell className="table-cell">{transaction.amount}</TableCell>
             <TableCell className="table-cell">{transaction.vendor}</TableCell>

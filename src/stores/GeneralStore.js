@@ -8,7 +8,6 @@ export class GeneralStore {
     @observable startDate = ''
     @observable endDate = ''
     @action handleInput = (name, value) => {
-        name === 'number' ? this[name] = parseInt(value)
-        : this[name] = value
+        this[name] = value
     } 
 }

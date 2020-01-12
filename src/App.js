@@ -6,6 +6,7 @@ import Operations from './components/Operations'
 import Categories from './components/Categories'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 @inject("BankStore")
