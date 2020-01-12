@@ -45,7 +45,7 @@ export class BankStore {
             await axios.delete(`/transaction/${id}`)
             this.fetchTransactions()
         } catch {
-            console.log("Whoops, didn't work")
+            console.log("Whoops, didn't work! Try again soon")
         }
     }
 }
