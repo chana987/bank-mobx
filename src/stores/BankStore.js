@@ -23,7 +23,7 @@ export class BankStore {
     @action fetchTransactions = async () => {
         try {
             let transactions = []
-            let response = await axios.get('http://localhost:4000/transactions')
+            let response = await axios.get('/transactions')
             response.data.forEach(t => transactions.push(new Transaction(t.amount, t.category, t.vendor, t.date, t._id)))
             this.transactions = transactions
             this.filteredTransactions = transactions
@@ -33,7 +33,7 @@ export class BankStore {
     }
     @action addTransaction = async ({transaction}) => {
         try {
-            let response = await axios.post('http://localhost:4000/transaction', { transaction })
+            let response = await axios.post('/transaction', { transaction })
             this.fetchTransactions()
             return response
         } catch {
@@ -42,7 +42,7 @@ export class BankStore {
     }
     @action deleteTransaction = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/transaction/${id}`)
+            await axios.delete(`/transaction/${id}`)
             this.fetchTransactions()
         } catch {
             console.log("Whoops, didn't work! Try again soon")

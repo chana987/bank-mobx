@@ -14,7 +14,7 @@ class Categories extends Component {
     render() {
         return (
             <div>
-                <Table>
+                <Table className="table">
                     <TableHead>
                         <TableRow>
                             <TableCell style={{ fontWeight: 900 }}>Date</TableCell>
