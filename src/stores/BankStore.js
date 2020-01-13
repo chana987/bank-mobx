@@ -37,7 +37,7 @@ export class BankStore {
             this.fetchTransactions()
             return response
         } catch {
-            throw new Error("Whoops, didn't work")
+            console.log("Whoops, didn't work")
         }
     }
     @action deleteTransaction = async (id) => {
