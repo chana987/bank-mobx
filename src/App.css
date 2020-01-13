@@ -2,8 +2,6 @@
   background-color: #dadfe9;
   min-height: 100vh;
   text-align: center;
-  width: 100%;
-  overflow-x: scroll;
 }
 
 .App-logo {
@@ -34,7 +32,7 @@ a {
 }
 
 button {
-  margin: 20px;
+  margin: 25px;
 }
 
 .add-transaction {
