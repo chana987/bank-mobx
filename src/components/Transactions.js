@@ -39,7 +39,7 @@ class Transactions extends Component {
                     />
                     <Button onClick={this.filterByDate} variant="contained" color="primary">Find</Button>
                 </div>
-                <Table>
+                <Table className="table">
                     <TableHead>
                         <TableRow>
                             <TableCell style={{ fontWeight: 900 }}>Date</TableCell>

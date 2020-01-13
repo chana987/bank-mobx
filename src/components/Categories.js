@@ -14,7 +14,7 @@ class Categories extends Component {
     render() {
         return (
             <div>
-                <Table>
+                <Table className="table">
                     <TableHead>
                         <TableRow>
                             <TableCell style={{ fontWeight: 900 }}>Date</TableCell>
@@ -27,7 +27,7 @@ class Categories extends Component {
                     {this.props.BankStore.getCategories.map((c, i) =>
                         <TableBody key={i}>
                             <TableRow>
-                                <TableCell style={{ fontWeight: 900 }}>{c}</TableCell>
+                                <TableCell style={{ fontWeight: 800, fontSize: "25px", paddingTop: "40px", paddingLeft: "40px", textDecoration: "underline" }}>{c}</TableCell>
                             </TableRow>
                             {this.props.BankStore.transactions.map((t) => t.category === c ?
                                 <Transaction transaction={t} key={t.id} /> : null )}

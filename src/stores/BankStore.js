@@ -16,14 +16,14 @@ export class BankStore {
         return categories
     }
 
-    @action filterByDate = (startDate = '1700-01-01T00:00:00Z GMT', endDate = '4000-12-31T00:00:00Z GMT') => {
+    @action filterByDate = (startDate, endDate) => {
         this.filteredTransactions = [...this.transactions].filter(t => t.date >= startDate && t.date <= endDate)
     }
 
     @action fetchTransactions = async () => {
         try {
             let transactions = []
-            let response = await axios.get('http://localhost:4000/transactions')
+            let response = await axios.get('/transactions')
             response.data.forEach(t => transactions.push(new Transaction(t.amount, t.category, t.vendor, t.date, t._id)))
             this.transactions = transactions
             this.filteredTransactions = transactions
@@ -32,11 +32,8 @@ export class BankStore {
         }
     }
     @action addTransaction = async ({transaction}) => {
-        if (transaction.amount === '' || transaction.amount <= 0 || transaction.category === '' || transaction.vendor === '' || transaction.date === '') {
-            return "Incorrect input"
-        }
         try {
-            let response = await axios.post('http://localhost:4000/transaction', { transaction })
+            let response = await axios.post('/transaction', { transaction })
             this.fetchTransactions()
             return response
         } catch {
@@ -45,10 +42,10 @@ export class BankStore {
     }
     @action deleteTransaction = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/transaction/${id}`)
+            await axios.delete(`/transaction/${id}`)
             this.fetchTransactions()
         } catch {
-            throw new Error("Whoops, didn't work")
+            console.log("Whoops, didn't work! Try again soon")
         }
     }
 }
